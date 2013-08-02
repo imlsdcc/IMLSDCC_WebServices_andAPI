@@ -131,6 +131,7 @@
     <Compile Include="Controllers\FacetsController.vb" />
     <Compile Include="Controllers\ItemController.vb" />
     <Compile Include="Controllers\SearchController.vb" />
+    <Compile Include="Controllers\UNAPIController.vb" />
     <Compile Include="Models\BriefCollection.vb" />
     <Compile Include="Models\BrowseCollectionDates.vb" />
     <Compile Include="Models\BrowseCollectionInstitutions.vb" />
@@ -288,7 +289,14 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Styles\XSLTs\dcToMods.xsl" />
     <Content Include="Styles\XSLTs\FeaturedContent.xsl" />
+    <Content Include="Styles\XSLTs\inc\csdgm.xsl" />
+    <Content Include="Styles\XSLTs\inc\dcmiType.xsl" />
+    <Content Include="Styles\XSLTs\inc\forms.xsl" />
+    <Content Include="Styles\XSLTs\inc\iso3166-1.xsl" />
+    <Content Include="Styles\XSLTs\inc\iso639-2.xsl" />
+    <Content Include="Styles\XSLTs\inc\mimeType.xsl" />
     <Content Include="Views\Collection\Brief.ascx" />
     <Content Include="Views\Collection\Detail.ascx" />
     <Content Include="Views\DetailList.ascx" />

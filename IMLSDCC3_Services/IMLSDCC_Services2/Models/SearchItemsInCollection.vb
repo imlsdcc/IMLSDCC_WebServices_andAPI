@@ -52,7 +52,7 @@
         uriPreviousPage = "/Search/Items?" & "&collections=" & id & "&iStartRecord=" & startRecord1 - maximumRecords1 & "&iMaximumRecords=" & maximumRecords1
 
         'Dim rscount = (From r In db.Records Where r.titleNoPunct.StartsWith(startsWith1) Select r.recordID)
-        Dim rs = (From r In db.Records Join rtd In db.RecordsToCollections On r.recordID Equals rtd.recordID Where colllist.Contains(rtd.collID) Order By r.titleNoPunct Select r.titleText, r.recordID)
+        Dim rs = (From r In db.Records Join rtd In db.RecordsToCollections On r.recordID Equals rtd.recordID Where colllist.Contains(rtd.collID) Order By r.titleNoPunct = "" Select r.titleText, r.recordID)
 
         Dim xcount = rs.Count
         totalRecords = xcount

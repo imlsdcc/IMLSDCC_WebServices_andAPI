@@ -38,6 +38,7 @@ Public Class ShortRecord
             Dim x = z.shortXML
             Dim dom As New XmlDocument
             dom.LoadXml(x.ToString)
+            identifier = z.identifier
 
             Dim rs2 = From r In db.RecordsToCollections Where r.recordID = id Select r.collID
             Dim zz = rs2.Single
@@ -51,9 +52,13 @@ Public Class ShortRecord
             If Not (dom.SelectSingleNode("//property[@name='title']/value") Is Nothing) Then
                 title = dom.SelectSingleNode("//property[@name='title']/value").InnerText
             End If
-            If Not (z.identifier Is Nothing) Then
-                identifier = z.identifier
+            If Not (dom.SelectSingleNode("//property[@name='identifier']/value[starts-with(.,'http')]") Is Nothing) Then
+
+                'identifier = dom.SelectSingleNode("//property[@name='identifier']/value[starts-with(.,'http')]").InnerText
             End If
+            'If Not (z.identifier Is Nothing) Then
+            '    identifier = z.identifier
+            'End If
             If Not (dom.SelectSingleNode("//property[@name='creator']/value") Is Nothing) Then
                 creator = dom.SelectSingleNode("//property[@name='creator']/value").InnerText
                 'creatorurl = "/Search/Items?agent=" & creator & "&dates=&types=&places=&collections=&startRecord=1&maximumRecords=10&scope=&sort="

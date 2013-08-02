@@ -21,6 +21,11 @@ Public Class MvcApplication
         '    "~/Views/Shared/ServiceSearchAid.aspx"
         ')
         routes.MapRoute( _
+            "unAPI", _
+            "UNAPI/{id}", _
+            New With {.controller = "UNAPI", .action = "Index", .id = UrlParameter.Optional} _
+        )
+        routes.MapRoute( _
             "Default", _
             "{controller}/{action}/{id}", _
             New With {.controller = "Home", .action = "Index", .id = UrlParameter.Optional} _

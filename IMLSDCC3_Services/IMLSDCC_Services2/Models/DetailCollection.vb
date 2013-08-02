@@ -34,6 +34,7 @@ Public Class DetailCollection
     Public Property hosting As List(Of String)
 
     Public Property contributing As List(Of String)
+    Public Property itemsInCollection As String
     Public Property thumbnail1 As String
     Public Property thumbnail2 As String
     Public Property thumbnail3 As String
@@ -67,7 +68,10 @@ Public Class DetailCollection
                 thumbnail2 = "http://gita.grainger.uiuc.edu/thumbnails/thumbnail.aspx?identifier=" & y.oaiidentifier2
                 thumbnail3 = "http://gita.grainger.uiuc.edu/thumbnails/thumbnail.aspx?identifier=" & y.oaiidentifier3
                 thumbnail4 = "http://gita.grainger.uiuc.edu/thumbnails/thumbnail.aspx?identifier=" & y.oaiidentifier4
+
             End If
+
+            itemsInCollection = (From r In db2.Records Where r.cid = id Select r.recordID).Count()
 
             title = z.title_collection
             description = z.description
@@ -115,7 +119,6 @@ Public Class DetailCollection
                 timelist.Add(j)
             Next
             timeperiod = timelist
-
 
             'Dim rslong = From r In db.LongDisplays Where r.collectionID = id Select r.type_collection, r.format, r.publisher, r.relation_supplement, r.size, r.audience, r.interactivity, r.accessrights, r.rights, r.accrualPeriodicity, r.contributor
             Dim rslong = From r In db.collectionDetails(id)

@@ -58,7 +58,7 @@ Public Class BrowseInstitutionStates
 
         If state Is Nothing Then
             'Dim rscount = (From r In db.InstitutionProperties Where r.property = "state" And r.text.StartsWith(startsWith1) Order By r.text Select r.text).Distinct
-            Dim rs = (From r In db.InstitutionProperties Where r.property = "state" And r.text.StartsWith(startsWith1) Order By r.text Select r.text)
+            Dim rs = (From r In db.InstitutionProperties Where r.property = "state" And Not r.text.StartsWith("[Outside") Order By r.text Select r.text).Distinct()
             Dim xcount = rs.Count
             totalRecords = xcount
             If rs.Count = 0 Then

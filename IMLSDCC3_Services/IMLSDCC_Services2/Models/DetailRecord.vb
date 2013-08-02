@@ -59,8 +59,11 @@ Public Class DetailRecord
             If Not (dom.SelectSingleNode("//property[@name='title']/value") Is Nothing) Then
                 title = dom.SelectSingleNode("//property[@name='title']/value").InnerText
             End If
-            If Not (dom.SelectSingleNode("//property[@name='identifier']/value") Is Nothing) Then
-                identifier = z.identifier
+            'identifier = "/NotFound"
+            identifier = z.identifier
+            If Not (dom.SelectSingleNode("//property[@name='identifier']/value[starts-with(.,'http')]") Is Nothing) Then
+                'identifier = z.identifier
+                'identifier = dom.SelectSingleNode("//property[@name='identifier']/value[starts-with(.,'http')]").InnerText
             End If
             If Not (dom.SelectSingleNode("//property[@name='creator']/value") Is Nothing) Then
                 creator = dom.SelectSingleNode("//property[@name='creator']/value").InnerText

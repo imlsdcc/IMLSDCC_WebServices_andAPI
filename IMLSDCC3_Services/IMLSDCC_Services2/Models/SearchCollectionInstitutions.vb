@@ -59,7 +59,7 @@ Public Class SearchCollectionInstitutions
         uriNextPage = "/Search/Collections?institution=" & searchargs1 & "&cStartRecord=" & startRecord1 + maximumRecords1 & "&cMaximumRecords=" & maximumRecords1 & "&scope=" & scope1 & "&sort=" & sort1
         uriPreviousPage = "/Search/Collections?institution=" & searchargs1 & "&cStartRecord=" & startRecord1 - maximumRecords1 & "&cMaximumRecords=" & maximumRecords1 & "&scope=" & scope1 & "&sort=" & sort1
 
-        Dim ret = (From c In db.CollectionInstitutions Where instlist.Contains(c.institutionID) Select c.collectionID Distinct)
+        Dim ret = (From c In db.CollectionInstitutions Join col In db.Collections On c.collectionID Equals col.collectionID Where instlist.Contains(c.institutionID) And col.physical = False Select c.collectionID Distinct)
 
         totalRecords = ret.Count
         ret = ret.Skip(startRecord1 - 1).Take(maximumRecords1)

@@ -185,12 +185,34 @@
 
         End Function
 
-        Public Function GetFacetName() As ActionResult
+        Public Function GetFacetValue() As ActionResult
+
+            Dim db = New IMLSDCCDataContext
             Dim facetIds = Request.QueryString("ids").Split(",")
-
+            Dim facetList As New List(Of facets)
             For Each f In facetIds
+                If f <> "" Then
+                    Dim str = (From r In db.Facets Where r.facetID = f Select r.facetValue).Take(1).ToList()
 
+                    If Not str Is Nothing And str.Count > 0 Then
+                        Dim item As New facets(str(0), f)
+                        facetList.Add(item)
+                    End If
+                End If
             Next
+
+            Return Json(facetList, "application/json", JsonRequestBehavior.AllowGet)
         End Function
+
+        Public Class facets
+            'Public Property uri As String
+            Public Property text As String
+            Public Property facetid As Integer
+            Public Sub New(ByVal xtext As String, ByVal xfacetid As Integer)
+                'uri = xuri
+                text = xtext
+                facetid = xfacetid
+            End Sub
+        End Class
     End Class
 End Namespace

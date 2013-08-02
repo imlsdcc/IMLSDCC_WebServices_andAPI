@@ -200,7 +200,7 @@ Namespace IMLSDCC_Services2
             str = rdr.ReadToEnd
             rdr.Close()
 
-            Response.Write(str)
+            ' Response.Write(str)
             'Catch ex As Exception
             'Response.Write("Error: " & Server.HtmlEncode(ex.Message))
             'End Try
